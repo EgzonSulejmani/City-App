@@ -1,0 +1,202 @@
+
+body{
+   
+    
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    
+}
+.container {
+    border-radius: 20px;
+    color: white;
+    width: 400px;
+    height: 965px;
+    background-image: url(./photos/bcg2.jpg);
+    background-size: 700px;
+    
+}
+.search-box{
+    
+    display: inline-flex;
+    border-radius: 40px;
+    height: 40px;
+    float: right;
+    margin-top: 90px;
+    outline:none;
+    
+}
+
+#btn{
+    background: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-box #search{
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+    color: #f1c751;
+    background: rgba(226, 216, 216, 0.638);
+    font-size: 16px;
+    transition: 1.2s;
+    line-height: 40px;
+    width: 0px;
+    border-radius: 20px;
+}
+.search-box:hover > #search{
+    width: 180px;
+    padding: 0 6px;
+    
+}
+.search-box:hover > #btn{
+    transform: scale(1.5);
+}
+
+.fa-search{
+    color:  #f1c751;
+    
+}
+
+.nav{
+    margin-top: 850px;
+    height: 50px;
+    position: fixed;
+    background-color: rgba(226, 224, 220, 0.685);
+    border-radius: 10px;
+    position: fixed;
+   
+    
+}
+
+.nav a{
+    text-decoration: none;
+    color: rgba(110, 110, 109, 0.638);
+    padding-left: 40px;
+    letter-spacing: 50px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 30px;
+    
+}
+.nav a:hover{
+    text-decoration: none;
+    color: #f1c751;
+    transition: 1s;
+    transform: scale(1.5);
+    
+}
+
+.alert{
+    height: 50px;
+    font-size: 12px;
+}
+
+.slidercity{
+    display: inline;
+    box-shadow: 2px 4px 94px -6px rgba(240,162,26,1);
+    
+}
+
+.card{
+    background: none;
+    border: none;
+    display: inline-flex;
+    padding: 1.3px;
+    margin-top: 5px;
+    border-radius: 20px 40px 20px 40px;
+    -moz-border-radius: 20px 40px 20px 40px;
+    -webkit-border-radius: 20px 40px 20px 40px;
+    border: 0px none #000000;
+}
+.Kumanovë{
+    text-decoration-line: none;
+    background-image: url(../static/photos/kumanova.jpg);
+    background-size: 225px;
+    width: 180px;
+    height: 140px;
+    border-radius: 20px 40px 20px 40px;
+    -moz-border-radius: 20px 40px 20px 40px;
+    -webkit-border-radius: 20px 40px 20px 40px;
+    
+}
+.Shkup{
+    text-decoration-line: none;
+    background-image:url(../static/photos/shkupi.jpg);
+    background-size: 210px;
+    width: 180px;
+    height: 140px;
+    border-radius: 40px 20px 40px 20px;
+    -moz-border-radius: 40px 20px 40px 20px;
+    -webkit-border-radius: 40px 20px 40px 20px;
+    border: 0px none #000000;
+    
+}
+.Tetov{
+    text-decoration-line: none;
+    background-image: url(../static/photos/tetova.jpg);
+    background-size: 185px;
+    width: 180px;
+    height: 140px;
+    border-radius: 20px 40px 20px 40px;
+    -moz-border-radius: 20px 40px 20px 40px;
+    -webkit-border-radius: 20px 40px 20px 40px;
+}
+.Strugë{
+    text-decoration-line: none;
+    background-image: url(../static/photos/struga.jpg);
+    background-size: 230px;
+    width: 180px;
+    height: 140px;
+    border-radius: 40px 20px 40px 20px;
+    -moz-border-radius: 40px 20px 40px 20px;
+    -webkit-border-radius: 40px 20px 40px 20px;
+    border: 0px none #000000;
+}
+.Dibër{
+    text-decoration-line: none;
+    background-image: url(../static/photos/dibra.jpg);
+    background-size: 230px;
+    width: 180px;
+    height: 140px;
+    border-radius: 20px 40px 20px 40px;
+    -moz-border-radius: 20px 40px 20px 40px;
+    -webkit-border-radius: 20px 40px 20px 40px;
+}
+.Gostivar{
+    text-decoration-line: none;
+    background-image: url(../static/photos/gostivar.jpg);
+    background-size: 210px;
+    width: 180px;
+    height: 140px;
+    border-radius: 40px 20px 40px 20px;
+    -moz-border-radius: 40px 20px 40px 20px;
+    -webkit-border-radius: 40px 20px 40px 20px;
+    border: 0px none #000000;
+}
+.card  h4{
+    
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: #f1c751;
+    
+}
+.card a:hover{
+    text-decoration: none;
+    
+}
+.table-responsive{
+    border-radius: 10px;
+}
+

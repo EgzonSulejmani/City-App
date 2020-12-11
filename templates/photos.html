@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photos {{ album.title }} | Page</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <link rel="stylesheet" href="../static/photos.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="logo">
+            <img src="../static/photos/logo2.png" alt="">
+
+
+            <form class="search-box " method="POST" action="{{ url_for('search') }}">
+                <input id="search" class="form-control mr-sm-2" name="search" type="text" placeholder="Search..."
+                    aria-label="Search">
+                <button id="btn" class="btn" type="submit" onclick="{{ url_for('search') }}" ()>
+                    <i class="fa fa-search"></i>
+                </button>
+            </form>
+
+        </div>
+
+        <div class="nav">
+            <a href="{{url_for('homepage')}}"><i class="fa fa-home"></i></a>
+            <a href="{{url_for('login')}}">
+                <i class="fa fa-user">
+                    <p>
+                        {{ session.get("username") }}</p>
+                </i>
+            </a>
+            <a href="{{ url_for('logout') }}">
+                <i class="fa fa-sign-out"></i>
+            </a>
+        </div>
+
+        <br><br><br><br><br><br><br>
+        <div class="mark-dis">
+            <div class="card">
+                <div class="card-body">
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <div class="alert alert-info">
+                        {% for message in messages %}
+                        {{ message }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+                    <form action="{{ url_for('photos', album_id=album.id) }}" method="POST"
+                        enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="title">
+                                <h3>Photo title</h3>
+                            </label>
+                            <input type="text" name="title" id="title" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="photo" class="d-block">
+                                <h3>Photo</h3>
+                            </label>
+                            <input type="file" name="photo" id="photo">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="create">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <br>
+            <div class="photo-album">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <!-- <div class="alert alert-info">
+                            {% for message in messages %}
+                            {{ message }}
+                            {% endfor %}
+                        </div> -->
+                {% endif %}
+                {% endwith %}
+                {% if photos %}
+
+                <div class="table-responsive">
+                    <table class="table table-borderless">
+                        <tr>
+                            <th class="title">ID</th>
+                            <th class="title">Title</th>
+                            <th class="title">Photo</th>
+
+                        </tr>
+                        {% for photo in photos %}
+                        <tr>
+                            <td>{{ photo.id }}</td>
+                            <td>{{ photo.title }}</td>
+                            <td>
+                                <div class="img">
+                                    <img src="{{ url_for('static', filename='photos/'+photo.photo) }}"
+                                        alt="{{ photo.title }}" style="width: 100%; height: 170%;">
+                                </div>
+                            </td>
+                            <td>
+                                <a href="{{ url_for('delete_photo', album_id=album.id, photo_id=photo.id) }}"
+                                    class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure?');"
+                                    title="Delete photo">
+                                    <i class="fa fa-close"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+                {% else %}
+                <br><br><br><br><br><br>
+                <div class="alert alert-info">
+                    No photo was added yet!
+                </div>
+                {% endif %}
+
+
+            </div>
+
+</body>
+
+</html>

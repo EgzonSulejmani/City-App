@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market | HomePage</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <link rel="stylesheet" href="../static/mark-all.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="container">
+
+            <div class="logo">
+                <img src="../static/photos/logo2.png" alt="">
+
+
+                <form class="search-box " method="POST" action="{{ url_for('search') }}">
+                    <input id="search" class="form-control mr-sm-2" name="search" type="text" placeholder="Search..."
+                        aria-label="Search">
+                    <button id="btn" class="btn" type="submit" onclick="" ()>
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+
+            </div>
+
+            <div class="nav">
+                <a href="{{url_for('homepage')}}"><i class="fa fa-home"></i></a>
+                <a href="{{url_for('login')}}">
+                    <i class="fa fa-user">
+                        <p>
+                            {{ session.get("username") }}</p>
+                    </i>
+                </a>
+                <a href="{{ url_for('logout') }}">
+                    <i class="fa fa-sign-out"></i>
+                </a>
+            </div>
+            <br><br><br><br><br>
+            <div class="mark-dis">
+                <div class="card">
+
+                    <div class="card-body">
+                        {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                        <div class="alert alert-info">
+                            {% for message in messages %}
+                            {{ message }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% endwith %}
+                        <form action="{{ url_for('market') }}" method="POST">
+                            <div class="form-group">
+                                <label for="title">
+                                    <h3>Market title</h3>
+                                </label>
+                                <input type="text" name="title" id="title" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="title">
+                                    <h3>Adress</h3>
+                                </label>
+                                <input type="adress" name="adress" id="adress" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="create ">Create</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <br> <br>
+            <div class="table">
+                {% if market %}
+                <div class="table-responsive">
+                    <table class="table table-borderless">
+                        <tr>
+
+                            <th class="title">Title</th>
+                            <th class="title">Adress</th>
+                            <th class=" title">Album</th>
+
+                        </tr>
+                        {% for markets in market %}
+                        <tr>
+
+                            <td class="font-weight-bold">{{markets.title}}</td>
+
+
+                            <td><a href="" class="adress">{{markets.user_id}}</a></td>
+
+                            <td>
+
+                                <a href="{{ url_for('albums') }}" class="btn-album">
+                                    <i class="fa fa-plus">Album</i>
+                                </a>
+
+                            </td>
+                            <td>
+                                <a href="{{url_for('delete_markets',markets_id=markets.id)}}"
+                                    class="btn btn-sm btn-danger" onclick="return confirm('Are you sure');"><i
+                                        class="fa fa-close"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+                    </table>
+
+                </div>
+                {% else %}
+                <div class="alert alert-info">
+                    No Market was Added yet!
+                </div>
+                {% endif %}
+            </div>
+
+        </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Albums | Page</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <link rel="stylesheet" href="../static/albums.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="logo">
+            <img src="../static/photos/logo2.png" alt="">
+
+
+            <form class="search-box " method="POST" action="{{ url_for('search') }}">
+                <input id="search" class="form-control mr-sm-2" name="search" type="text" placeholder="Search..."
+                    aria-label="Search">
+                <button id="btn" class="btn" type="submit" onclick="{{ url_for('search') }}" ()>
+                    <i class="fa fa-search"></i>
+                </button>
+            </form>
+
+        </div>
+        <div class="nav">
+            <a href="{{url_for('homepage')}}"><i class="fa fa-home"></i></a>
+            <a href="{{url_for('login')}}">
+                <i class="fa fa-user">
+                    <p>
+                        {{ session.get("username") }}</p>
+                </i>
+            </a>
+            <a href="{{ url_for('logout') }}">
+                <i class="fa fa-sign-out"></i>
+            </a>
+        </div>
+        <br><br><br><br><br>
+        <div class="mark-dis">
+            <div class="card">
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <div class="alert alert-info">
+                    {% for message in messages %}
+                    {{ message }}
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endwith %}
+                <div class="card">
+                    <div class="card-body">
+                        <form action="{{ url_for('albums') }}" method="POST">
+                            <div class="form-group">
+                                <label for="title">
+                                    <h3>Album title</h3>
+                                </label>
+                                <input type="text" name="title" id="title" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="create">Create</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="table">
+                {% if albums %}
+                <div class="table-responsive">
+                    <table class="table table-borderless">
+                        <tr>
+                            <!-- <th class="title">ID</th> -->
+                            <th class="title">Title</th>
+                            <th class="title"></th>
+                        </tr>
+                        {% for album in albums %}
+                        <tr>
+                            <!-- <td class="font-weight-light">{{ album.id }}</td> -->
+                            <td class="font-weight-bold">{{ album.title }}</td>
+                            <td>
+                                <a href="{{ url_for('delete_album', album_id=album.id) }}"
+                                    class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure?');"
+                                    title="Delete album">
+                                    <i class="fa fa-close"></i>
+                                </a>
+                                <a href="{{ url_for('photos', album_id=album.id) }}" class="btn-album"
+                                    title="Add photo">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                {% else %}
+                <div class="alert alert-info">
+                    No album was added yet!
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+
+</body>
+
+</html>

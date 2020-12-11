@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App | HomePage</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="../static/dashboard.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="logo">
+            <img src="../static/photos/logo2.png" alt="">
+
+
+            <form class="search-box " method="POST" action="{{ url_for('search') }}">
+                <input id="search" class="form-control mr-sm-2" name="search" type="text" placeholder="Search..."
+                    aria-label="Search">
+                <button id="btn" class="btn" type="submit" onclick="{{ url_for('search') }}" ()>
+                    <i class="fa fa-search"></i>
+                </button>
+            </form>
+
+        </div>
+        <br>
+        <div class="alert alert-warning alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Përshëndetje! </strong>Ju lutem shtoni bizneset,lokalet e juaja që të ju gjejnë më lehtë të tjerët
+        </div>
+
+        <div class="slidercity">
+            <h3><b>Posts</b></h3>
+            <br>
+
+
+            <div class="card">
+                <a href="{{url_for('kumanova')}}" class="Kumanovë">
+                </a>
+                <h4><b>Kumanovë</b></h4>
+            </div>
+
+            <div class="card">
+                <a href="" class="Shkup">
+                </a>
+                <h4><b>Shkup</b></h4>
+            </div>
+            <br>
+            <div class="card">
+                <a href="" class="Tetov">
+                </a>
+                <h4><b>Tetov</b></h4>
+            </div>
+
+            <div class="card">
+                <a href="" class="Strugë">
+                </a>
+                <h4><b>Strugë</b></h4>
+            </div>
+
+            <div class="card">
+                <a href="" class="Dibër">
+                </a>
+                <h4><b>Dibër</b></h4>
+            </div>
+            <div class="card ">
+                <a href="" class="Gostivar">
+                </a>
+                <h4><b>Gostivar</b></h4>
+            </div>
+
+
+
+
+
+        </div>
+        <br>
+
+
+    </div>
+    <div class="nav">
+        <a href="{{url_for('homepage')}}"><i class="fa fa-home"></i></a>
+        <a href="{{url_for('login')}}">
+            <i class="fa fa-user">
+                <p>
+                    {{ session.get("username") }}</p>
+            </i>
+        </a>
+        <a href="{{ url_for('logout') }}">
+            <i class="fa fa-sign-out"></i>
+        </a>
+    </div>
+
+</body>
+
+</html>

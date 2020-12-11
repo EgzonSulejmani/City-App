@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kumanova | Page</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <link rel="stylesheet" href="../static/city.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="../static/photos/logo2.png" alt="">
+
+
+                <form class="search-box " method="POST" action="{{ url_for('search') }}">
+                    <input id="search" class="form-control mr-sm-2" name="search" type="text" placeholder="Search..."
+                        aria-label="Search">
+                    <button id="btn" class="btn" type="submit" onclick="{{ url_for('search') }}" ()>
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+
+            </div>
+            <div class="nav">
+                <a href="{{url_for('homepage')}}"><i class="fa fa-home"></i></a>
+                <a href="{{url_for('login')}}">
+                    <i class="fa fa-user">
+                        <p>
+                            {{ session.get("username") }}</p>
+                    </i>
+                </a>
+                <a href="{{ url_for('logout') }}">
+                    <i class="fa fa-sign-out"></i>
+                </a>
+            </div>
+        </div>
+        <br><br><br><br><br><br>
+        <div class="slidercity">
+
+            <div class="card">
+                <a href="{{url_for('market')}}" class="market">
+                </a>
+                <h4><b>Market</b></h4>
+            </div>
+            <div class="card">
+                <a href="" class="store">
+                </a>
+                <h4><b>Store</b></h4>
+            </div>
+            <div class="card">
+                <a href="" class="Hospital">
+                </a>
+                <h4><b>Hospital</b></h4>
+            </div>
+            <div class="card">
+                <a href="" class="GasStation">
+                </a>
+                <h4><b>GasStation</b></h4>
+            </div>
+            <div class="card">
+                <a href="" class="Caffe">
+                </a>
+                <h4><b>Caffe</b></h4>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>
